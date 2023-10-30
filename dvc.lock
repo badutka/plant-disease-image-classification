@@ -14,9 +14,9 @@ stages:
     outs:
     - path: artifacts/data_ingestion/Apples
       hash: md5
-      md5: 364e39927856bd0cc9e9b0e4672e6f3c.dir
-      size: 25553030
-      nfiles: 1770
+      md5: 7a2d7d6fd2a769704d8286d64a80f217.dir
+      size: 24788933
+      nfiles: 1700
   prepare_base_model:
     cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
     deps:
@@ -41,7 +41,7 @@ stages:
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 68efb063fd933cdbc586c102a5cf696e.dir
+      md5: 533ae53891a97f62b65702921e68f872.dir
       size: 118059248
       nfiles: 2
   training:
@@ -49,12 +49,12 @@ stages:
     deps:
     - path: artifacts/data_ingestion/Apples
       hash: md5
-      md5: 364e39927856bd0cc9e9b0e4672e6f3c.dir
-      size: 25553030
-      nfiles: 1770
+      md5: 7a2d7d6fd2a769704d8286d64a80f217.dir
+      size: 24788933
+      nfiles: 1700
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 68efb063fd933cdbc586c102a5cf696e.dir
+      md5: 533ae53891a97f62b65702921e68f872.dir
       size: 118059248
       nfiles: 2
     - path: config/config.yaml
@@ -81,19 +81,19 @@ stages:
     outs:
     - path: artifacts/training/model.h5
       hash: md5
-      md5: ba18b8db717e290a544215386386dc3e
+      md5: 4ee822d4f207e883507a3bd82542c9e6
       size: 59340720
   evaluation:
     cmd: python src/cnnClassifier/pipeline/stage_04_evaluation.py
     deps:
     - path: artifacts/data_ingestion/Apples
       hash: md5
-      md5: 364e39927856bd0cc9e9b0e4672e6f3c.dir
-      size: 25553030
-      nfiles: 1770
+      md5: 7a2d7d6fd2a769704d8286d64a80f217.dir
+      size: 24788933
+      nfiles: 1700
     - path: artifacts/training/model.h5
       hash: md5
-      md5: ba18b8db717e290a544215386386dc3e
+      md5: 4ee822d4f207e883507a3bd82542c9e6
       size: 59340720
     - path: config/config.yaml
       hash: md5
@@ -113,5 +113,5 @@ stages:
     outs:
     - path: scores.json
       hash: md5
-      md5: 2387ea6d038814ad156d517b09182327
-      size: 73
+      md5: a1bec5d54b201f42dfeb8fe5b333f570
+      size: 57
